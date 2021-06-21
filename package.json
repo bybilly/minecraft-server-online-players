@@ -1,0 +1,17 @@
+{
+  "name": "minecraft-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "apicache": "^1.6.2",
+    "express": "^4.17.1",
+    "minecraft-server-util": "^3.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,7 +1,9 @@
 const util = require('minecraft-server-util');
 
 module.exports = async (req, res) => {
-    console.log("API called");
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     const { ip, port } = req.query;
 
     if (isNaN(port)) return res.json({error: "Port must be a number"});

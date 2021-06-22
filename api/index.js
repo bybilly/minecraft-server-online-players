@@ -1,10 +1,12 @@
 const app = require('express')();
 const util = require('minecraft-server-util');
+const cache = require('apicache').middleware;
+
+app.use(cache('4 minutes'));
 
 app.get('/api/players/:ip/:port', async (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 's-max-age=240000, stale-while-revalidate');
 
     const { ip, port } = req.params;
 

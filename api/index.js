@@ -4,7 +4,7 @@ const cache = require('apicache').middleware;
 
 app.use(cache('2 minutes'));
 
-app.get('/api/players/:ip/:port', async (req, res) => {
+app.get('/api/players/:ip/:port', (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -12,7 +12,7 @@ app.get('/api/players/:ip/:port', async (req, res) => {
 
     if (isNaN(port)) return res.json({error: "Port must be a number"});
 
-    await util.status(ip, {port: parseInt(port)})
+    util.status(ip, {port: parseInt(port)})
     .then((response) => {
         return res.json({online: response.onlinePlayers.toString()});
     })

@@ -9,6 +9,7 @@ const options = {
 app.get('/api/players/:ip/:port', (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Cache-Control', 's-maxage=60');
 
     const { ip, port } = req.params;
 

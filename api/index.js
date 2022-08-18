@@ -2,14 +2,14 @@ const app = require('express')();
 const util = require('minecraft-server-util');
 
 const options = {
-    timeout: 1500, // 1.5 seconds
+    timeout: 1200, // 1.2 seconds
     enableSRV: true
 };
 
 app.get('/api/players/:ip/:port', (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 's-maxage=90');
+    res.setHeader('Cache-Control', 's-maxage=120');
 
     const { ip, port } = req.params;
 
@@ -17,7 +17,7 @@ app.get('/api/players/:ip/:port', (req, res) => {
 
     util.status(ip, parseInt(port), options)
     .then(resp => {
-        return res.json({online: resp.players.online.toString()});
+        return res.json({online: '' + resp.players.online});
     })
     .catch(err => {
         return res.json({error: "Unknown error"});

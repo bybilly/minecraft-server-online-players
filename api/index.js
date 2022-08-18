@@ -2,14 +2,14 @@ const app = require('express')();
 const util = require('minecraft-server-util');
 
 const options = {
-    timeout: 2000, // 2 seconds
+    timeout: 1500, // 1.5 seconds
     enableSRV: true
 };
 
 app.get('/api/players/:ip/:port', (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 's-maxage=60');
+    res.setHeader('Cache-Control', 's-maxage=90');
 
     const { ip, port } = req.params;
 
